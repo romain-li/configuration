@@ -13,6 +13,8 @@
 dependencies:
   - common
   - supervisor
+  - role: themes
+    when: "{{ ECOMMERCE_DO_SETUP_THEMES }}"
   - role: edx_service
     edx_service_name: "{{ ecommerce_service_name }}"
     edx_service_config: "{{ ECOMMERCE_SERVICE_CONFIG }}"
