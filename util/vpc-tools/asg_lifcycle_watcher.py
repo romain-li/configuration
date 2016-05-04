@@ -32,7 +32,7 @@ class LifecycleHandler:
 
     INSTANCE_TERMINATION = 'autoscaling:EC2_INSTANCE_TERMINATING'
     TEST_NOTIFICATION = 'autoscaling:TEST_NOTIFICATION'
-    NUM_MESSAGES = 10
+    NUM_MESSAGES = 20
     WAIT_TIME_SECONDS = 10
 
     def __init__(self, profile, queue, hook, dry_run, bin_directory=None):
@@ -157,7 +157,7 @@ class LifecycleHandler:
 
     def verify_ok_to_retire(self, instance_id):
         """
-        Ensure that the ok_to_retire tag has been added to the instance in question
+        Ensure that the safe_to_retire tag has been added to the instance in question
         with the value 'true'
         """
         instance = self.get_ec2_instance_by_id(instance_id)
