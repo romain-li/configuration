@@ -14,6 +14,7 @@ MINOS_GIT_IDENTITY: !!null
 
 MINOS_SERVICE_CONFIG:
   aws_profile: !!null
+  aws_region: 'us-east-1'
   s3_bucket: "{{ COMMON_AWS_SYNC_BUCKET }}"
   bucket_path: lifecycle/minos
   voter_conf_d: "{{ minos_voter_cfg }}"
