@@ -66,7 +66,12 @@ class LifecycleHandler:
         for sqs_message in queue.get_messages(LifecycleHandler.NUM_MESSAGES,
                                               wait_time_seconds=LifecycleHandler.WAIT_TIME_SECONDS):
             body = json.loads(sqs_message.get_body_encoded())
-            as_message = json.loads(body['Message'])
+            # Some environments do ASG->SNS->SQS, others do ASG->SQS directly
+            # You only get a Message subpart when it passes through SNS
+            if 'Message' in body:
+                as_message = json.loads(body['Message'])
+            else:
+                as_message = body
             logging.info("Proccessing message {message}.".format(message=as_message))
 
             if 'LifecycleTransition' in as_message and as_message['LifecycleTransition'] \
