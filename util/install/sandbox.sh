@@ -17,10 +17,15 @@ if [[ ! "$(lsb_release -d | cut -f2)" =~ $'Ubuntu 12.04' ]]; then
 fi
 
 ##
+## Set the OPENEDX_RELEASE to Dogwood
+##
+export OPENEDX_RELEASE=named-release/dogwood.3
+
+##
 ## Set ppa repository source for gcc/g++ 4.8 in order to install insights properly
 ##
 sudo apt-get install -y python-software-properties
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 
 ##
 ## Update and Upgrade apt packages
@@ -62,7 +67,7 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone https://github.com/edx/configuration
+git clone https://github.com/romain-li/configuration
 cd configuration
 git checkout $CONFIG_VER
 
