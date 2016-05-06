@@ -13,6 +13,8 @@
     openid_workaround: True
     EDXAPP_LMS_NGINX_PORT: '80'
     edx_platform_version: 'master'
+    # Set to no if you want to close the password authentication.
+    COMMON_SSH_PASSWORD_AUTH: 'yes'
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
     # These should stay false for the public AMI

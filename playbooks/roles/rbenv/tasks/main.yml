@@ -60,7 +60,7 @@
 
 - name: update rbenv repo
   git_2_0_1: >
-    repo=https://github.com/sstephenson/rbenv.git
+    repo=https://git.coding.net/romain_li/rbenv
     dest={{ rbenv_dir }}/.rbenv version={{ rbenv_version }}
     accept_hostkey=yes
   sudo_user: "{{ rbenv_user }}"
@@ -105,7 +105,7 @@
 
 - name: clone ruby-build repo
   git: >
-    repo=https://github.com/sstephenson/ruby-build.git dest={{ tempdir.stdout }}/ruby-build
+    repo=https://git.coding.net/romain_li/ruby-build dest={{ tempdir.stdout }}/ruby-build
     accept_hostkey=yes
   when: tempdir.stdout is defined and (rbuild_present|failed or (installable_ruby_vers is defined and rbenv_ruby_version not in installable_ruby_vers))
   sudo_user: "{{ rbenv_user }}"
@@ -148,6 +148,15 @@
 
 - name: set global ruby {{ rbenv_ruby_version }}
   shell: "rbenv global {{ rbenv_ruby_version }}"
+  sudo_user: "{{ rbenv_user }}"
+  environment: "{{ rbenv_environment }}"
+  tags:
+    - install
+    - install:base
+
+- name: set gem source
+  shell: "gem sources --remove http://rubygems.org/;gem sources -a https://ruby.taobao.org/"
+  when: ruby_installed|failed
   sudo_user: "{{ rbenv_user }}"
   environment: "{{ rbenv_environment }}"
   tags:

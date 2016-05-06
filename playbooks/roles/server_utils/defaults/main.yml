@@ -33,7 +33,6 @@ server_utils_debian_pkgs:
   - tree
   - screen
   - tmux
-  - curl
   - vim-tiny
   - dnsutils
   - inetutils-telnet

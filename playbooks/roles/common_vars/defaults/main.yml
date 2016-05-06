@@ -39,11 +39,12 @@ common_directories:
     
 COMMON_ENVIRONMENT: 'default_env'
 COMMON_DEPLOYMENT: 'default_deployment'
-COMMON_PYPI_MIRROR_URL: 'https://pypi.python.org/simple'
-COMMON_NPM_MIRROR_URL: 'http://registry.npmjs.org'
+COMMON_PYPI_MIRROR_URL: 'https://pypi.douban.com/simple'
+COMMON_NPM_MIRROR_URL: 'https://registry.npm.taobao.org'
 COMMON_UBUNTU_APT_KEYSERVER: "http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search="
 
-COMMON_EDX_PPA: "deb http://ppa.edx.org {{ ansible_distribution_release }} main"
+COMMON_EDX_PPA: "deb http://192.168.9.129/ppa.edx.org {{ ansible_distribution_release }} main"
+# COMMON_EDX_PPA: "deb http://ppa.edx.org {{ ansible_distribution_release }} main"
 COMMON_EDX_PPA_KEY_SERVER: "keyserver.ubuntu.com"
 COMMON_EDX_PPA_KEY_ID: "69464050"
 
@@ -51,6 +52,7 @@ COMMON_EDX_PPA_KEY_ID: "69464050"
 #e.g. https://{{COMMON_GIT_MIRROR}}/{{COMMON_GIT_PATH}}/repo.git
 COMMON_GIT_PROTOCOL: 'https'  # https|ssh
 COMMON_GIT_MIRROR: 'github.com' # git server hostname
+CN_GIT_MIRROR: 'git.coding.net' # cn git server hostname
 COMMON_GIT_PATH: 'edx'  # git path prefix
 
 # override this var to set a different hostname

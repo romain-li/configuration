@@ -9,7 +9,7 @@
 # Can be run as follows:
 #
 # UPGRADE_OS=true CONFIGURATION_VERSION="master" \
-# bash <(curl -s https://raw.githubusercontent.com/edx/configuration/master/util/install/ansible-bootstrap.sh)
+# bash <(curl -s https://raw.githubusercontent.com/romain-li/configuration/master/util/install/ansible-bootstrap.sh)
 
 set -xe
 
@@ -22,7 +22,7 @@ if [[ -z "${ANSIBLE_VERSION}" ]]; then
 fi
 
 if [[ -z "${CONFIGURATION_REPO}" ]]; then
-  CONFIGURATION_REPO="https://github.com/edx/configuration.git"
+  CONFIGURATION_REPO="https://github.com/romain-li/configuration.git"
 fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
@@ -83,7 +83,8 @@ EOF
    exit 1;
 fi
 
-EDX_PPA="deb http://ppa.edx.org ${SHORT_DIST} main"
+EDX_PPA="deb http://192.168.9.129/ppa.edx.org ${SHORT_DIST} main"
+# EDX_PPA="deb http://ppa.edx.org ${SHORT_DIST} main"
 
 # Upgrade the OS
 apt-get update -y
